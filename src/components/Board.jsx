@@ -4,11 +4,14 @@ import './Board.css';
 
 const Board = () => {
     const [squares, setSquare] = useState(Array(9).fill(null));
+    const [xIsNext, setXIsNext] = useState(true);
 
     const handleClick = (i) => {
         const newSquares = squares.slice(); //null로 가득찬 squares배열을 얕은 복사함
-        newSquares[i] = 'X'; //얕은 복사본의 배열의 인자값 인덱스를 X로 변경
+        newSquares[i] = xIsNext ? 'X' : 'O';
         setSquare(newSquares);
+        setXIsNext(!xIsNext);
+        // setXIsNext((prev) => prev + 1); setState안에 인자로 함수 넣어서 다루는 법 공부하기
     };
 
     return (
