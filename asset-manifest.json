@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/goormthon_web_study_kjs/static/css/main.fb8b2e04.css",
+    "main.js": "/goormthon_web_study_kjs/static/js/main.2cc4c8ce.js",
+    "static/js/453.f10e1165.chunk.js": "/goormthon_web_study_kjs/static/js/453.f10e1165.chunk.js",
+    "index.html": "/goormthon_web_study_kjs/index.html",
+    "main.fb8b2e04.css.map": "/goormthon_web_study_kjs/static/css/main.fb8b2e04.css.map",
+    "main.2cc4c8ce.js.map": "/goormthon_web_study_kjs/static/js/main.2cc4c8ce.js.map",
+    "453.f10e1165.chunk.js.map": "/goormthon_web_study_kjs/static/js/453.f10e1165.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fb8b2e04.css",
+    "static/js/main.2cc4c8ce.js"
+  ]
+}
