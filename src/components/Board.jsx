@@ -8,15 +8,50 @@ const Board = () => {
 
     const handleClick = (i) => {
         const newSquares = squares.slice(); //null로 가득찬 squares배열을 얕은 복사함
+        if (calculateWinnder(squares) || newSquares[i]) {
+            return;
+        }
         newSquares[i] = xIsNext ? 'X' : 'O';
         setSquare(newSquares);
-        setXIsNext(!xIsNext);
-        // setXIsNext((prev) => prev + 1); setState안에 인자로 함수 넣어서 다루는 법 공부하기
+        setXIsNext((prev) => !prev);
+        //함수형 업데이트라고 부름, setState는 비동기적으로 발생하기 때문에 이전의 값을 전달받지 못함,
+        //setState함수는 현재 상태를 인수로 받는 함수를 인수로 취하고 새로운 상태를 return하기 때문에 위와 같은 형태로 작성이 가능함
     };
+
+    const calculateWinnder = (squares) => {
+        const lines = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ]; //승자가 나오는 모든 경우의 수를 배열로 나타냄
+
+        for (let index = 0; index < lines.length; index++) {
+            const [a, b, c] = lines[index];
+            if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+                return squares[a];
+            }
+        }
+        return null;
+    };
+
+    const winner = calculateWinnder(squares);
+
+    let gameStatus;
+
+    if (winner) {
+        gameStatus = 'Winner' + winner;
+    } else {
+        gameStatus = `다음에 둘 사람은 ${xIsNext ? 'X' : 'O'}`;
+    }
 
     return (
         <div>
-            <div className="status">다음에 둘 사람은 X냐 O냐를 표시해줄 곳</div>
+            <div className="status">{gameStatus}</div>
             <div className="board-row">
                 <Square value={squares[0]} onClick={() => handleClick(0)} />
                 <Square value={squares[1]} onClick={() => handleClick(1)} />
